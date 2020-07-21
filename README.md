@@ -1,7 +1,7 @@
-# Project Base for Vaadin and Spring Boot
+A Java application with CRUD operation that lets you keep add, delete, edit, track employees for enterprise needs and contact info. (WIP)
 
-This is an example project that can be used as a starting point to create your own Vaadin application with Spring Boot.
-It contains all the necessary configuration and some placeholder files to get you started.
+Technologies used: Vaadin UI framework, Spring Boot module, Java programming language. Using H2 in-memory database for testing.
+
 
 
 ## Running the Application
@@ -45,7 +45,6 @@ Profile `it` adds the following parameters to run integration tests:
 If you would like to run a separate test make sure you have added these parameters to VM Options of JUnit run configuration
 
 ## Project overview
-
 Project follow the Maven's [standard directory layout structure](https://maven.apache.org/guides/introduction/introduction-to-the-standard-directory-layout.html):
 - Under the `srs/main/java` are located Application sources
    - `Application.java` is a runnable Java application class and a starting point
@@ -56,17 +55,13 @@ Project follow the Maven's [standard directory layout structure](https://maven.a
 - The `frontend` directory in the root folder contains client-side dependencies and resource files
    - All CSS styles used by the application are located under the root directory `frontend/styles`    
    - Templates would be stored under the `frontend/src`
-
-
+   
 ## More Information and Next Steps
-
 - Vaadin Basics [https://vaadin.com/docs](https://vaadin.com/docs)
 - More components at [https://vaadin.com/components](https://vaadin.com/components) and [https://vaadin.com/directory](https://vaadin.com/directory)
 - Download this and other examples at [https://vaadin.com/start](https://vaadin.com/start)
 - Using Vaadin and Spring [https://vaadin.com/docs/v14/flow/spring/tutorial-spring-basic.html](https://vaadin.com/docs/v14/flow/spring/tutorial-spring-basic.html) article
 - Join discussion and ask a question at [https://vaadin.com/forum](https://vaadin.com/forum)
 
-
 ## Notes
-
 If you run application from a command line, remember to prepend a `mvn` to the command.
