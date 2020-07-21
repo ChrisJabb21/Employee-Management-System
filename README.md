@@ -49,11 +49,8 @@ If you would like to run a separate test make sure you have added these paramete
 
 ## Project overview
 Project follow the Maven's [standard directory layout structure](https://maven.apache.org/guides/introduction/introduction-to-the-standard-directory-layout.html):
-- Under the `srs/main/java` are located Application sources
-   - `Application.java` is a runnable Java application class and a starting point
-   - `GreetService.java` is a  Spring service class
-   - `MainView.java` is a default view and entry point of the application
-- Under the `srs/test` are located test files
+- Under the `src/main/java` are located Application sources
+- Under the `src/test` are located test files
 - `src/main/resources` contains configuration files and static resources
 - The `frontend` directory in the root folder contains client-side dependencies and resource files
    - All CSS styles used by the application are located under the root directory `frontend/styles`    
