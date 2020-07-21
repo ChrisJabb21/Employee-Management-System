@@ -6,7 +6,8 @@ Technologies used: Java programming language, Spring Boot, Using H2 in-memory da
 
 Front-end UI: Vaadin UI framework
 
-## Running the Application
+
+## Testing: Running the Application
 There are two ways to run the application :  using `mvn spring-boot:run` or by running the `Application` class directly from your IDE.
 
 You can use any IDE of your preference,but we suggest Eclipse or Intellij IDEA.
@@ -58,7 +59,7 @@ Project follow the Maven's [standard directory layout structure](https://maven.a
    - All CSS styles used by the application are located under the root directory `frontend/styles`    
    - Templates would be stored under the `frontend/src`
    
-## More Information and Next Steps
+## More Information and Next Steps, Vaadin Documentation
 - Vaadin Basics [https://vaadin.com/docs](https://vaadin.com/docs)
 - More components at [https://vaadin.com/components](https://vaadin.com/components) and [https://vaadin.com/directory](https://vaadin.com/directory)
 - Download this and other examples at [https://vaadin.com/start](https://vaadin.com/start)
