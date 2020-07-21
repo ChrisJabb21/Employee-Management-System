@@ -1,6 +1,8 @@
-A Java application with CRUD operation that lets you keep add, delete, edit, track employees for enterprise needs and contact info. (WIP)
+A Spring boot web application application written with CRUD operation that lets you keep add, delete, edit, track employees for enterprise needs and contact info. (WIP)
 
-Technologies used: Vaadin UI framework, Spring Boot module, Java programming language. Using H2 in-memory database for testing.
+Technologies used: Java programming language, Spring Boot, Using H2 in-memory database for test mock data. 
+
+Front-end UI: Vaadin UI framework
 
 
 
