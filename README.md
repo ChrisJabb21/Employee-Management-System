@@ -1,10 +1,10 @@
+## Project Overview
+
 A Spring boot web application application written with CRUD operation that lets you keep add, delete, edit, track employees for enterprise needs and contact info. (WIP)
 
 Technologies used: Java programming language, Spring Boot, Using H2 in-memory database for test mock data. 
 
 Front-end UI: Vaadin UI framework
-
-
 
 ## Running the Application
 There are two ways to run the application :  using `mvn spring-boot:run` or by running the `Application` class directly from your IDE.
