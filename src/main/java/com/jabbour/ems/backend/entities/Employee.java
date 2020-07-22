@@ -1,6 +1,8 @@
-package com.jabbour.ems.backend.models;
+package com.jabbour.ems.backend.entities;
 
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.validation.constraints.Email;
@@ -9,6 +11,11 @@ import javax.validation.constraints.NotNull;
 
 @Entity
 public class Employee extends AbstractEntity implements Cloneable {
+	
+	public enum Status {
+		FullTime, OnLeave, Contract
+	}
+	
 	@NotNull
 	@NotEmpty
 	private String firstName = "";
@@ -26,16 +33,15 @@ public class Employee extends AbstractEntity implements Cloneable {
 	@NotEmpty
 	private String email = "";
 	
-	private String position;
-	private String phoneNumber;
-	
-	public Employee() {
+	@Enumerated(EnumType.STRING)
+	@NotNull
+	private Employee.Status status;
+
+	public Employee.Status getStatus() {
+		return status;
 	}
-	
-	public Employee(String firstName, String lastName, Department department) {
-		this.firstName = firstName;
-		this.lastName = lastName;
-		this.department = department;
+	public void setStatus(Employee.Status status) {
+		this.status = status;
 	}
 	public String getFirstName() {
 		return firstName;
@@ -55,12 +61,6 @@ public class Employee extends AbstractEntity implements Cloneable {
 	public void setDepartment(Department department) {
 		this.department = department;
 	}
-	public String getPhoneNumber() {
-		return phoneNumber;
-	}
-	public void setPhoneNumber(String phoneNumber) {
-		this.phoneNumber = phoneNumber;
-	}
 	public String getEmail() {
 		return email;
 	}
@@ -68,20 +68,6 @@ public class Employee extends AbstractEntity implements Cloneable {
 		this.email = email;
 	}
 	
-	public String nameToString() {
-		return firstName + " " + lastName; 
-	}
-	
-	@Override
-	public String toString() {
-		return "Employee [firstName=" + firstName + ", lastName=" + lastName
-				+ ", departmentName=" + department + "]";
-	}
-	public String getPosition() {
-		return position;
-	}
-	public void setPosition(String position) {
-		this.position = position;
-	}
-	
+	 public String nameToString() { return firstName + " " + lastName; }
+	 
 }

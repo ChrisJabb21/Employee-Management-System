@@ -1,4 +1,4 @@
-package com.jabbour.ems.backend.models;
+package com.jabbour.ems.backend.entities;
 
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -9,11 +9,12 @@ import javax.persistence.MappedSuperclass;
  * The common superclass 
  * that the entities will inherit and 
  * not be a generated table
- * we define how objects ids are generated 
+ * it define how objects ids are generated 
  * and how object equality is determined.
- * 
  * @author chris jabbour
  *
+ *more on abstract classes
+ *https://docs.oracle.com/javase/tutorial/java/IandI/abstract.html
  */
 @MappedSuperclass
 public abstract class AbstractEntity {
