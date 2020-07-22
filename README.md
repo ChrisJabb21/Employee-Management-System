@@ -1,6 +1,6 @@
 ## Project Overview
 
-A Spring boot web application application written with CRUD operation that lets you keep add, delete, edit, track employees for enterprise needs and contact info. (WIP)
+A Spring boot web application application that lets you add, delete, edit and update employees in different departments for enterprise needs and contact info. (WIP)
 
 Technologies used: Java programming language, Spring Boot, H2 in-memory database to test mock data. 
 
