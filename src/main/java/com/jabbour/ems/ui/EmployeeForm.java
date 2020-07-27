@@ -1,6 +1,5 @@
 package com.jabbour.ems.ui;
 
-import org.springframework.beans.factory.annotation.Autowired;
 
 import com.jabbour.ems.backend.entities.Department;
 import com.jabbour.ems.backend.entities.Employee;
@@ -13,7 +12,11 @@ import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.textfield.EmailField;
 import com.vaadin.flow.component.textfield.TextField;
 
-/**/
+/**
+ * Employee form component that extends FormLayout Vaadin for form display
+ * @author chris
+ *
+ */
 public class EmployeeForm extends FormLayout {
 	
 	TextField firstName = new TextField("First name");
@@ -40,7 +43,4 @@ public class EmployeeForm extends FormLayout {
 		
 		return new HorizontalLayout(save, delete, close); 
 	}
-	
-	
-
 }
