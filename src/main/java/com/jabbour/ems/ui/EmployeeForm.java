@@ -20,18 +20,22 @@ import com.vaadin.flow.component.textfield.TextField;
 public class EmployeeForm extends FormLayout {
 	
 	TextField firstName = new TextField("First name");
-	
 	TextField lastName = new TextField("Last name");
-	
 	EmailField email = new EmailField("Email");
 	
 	ComboBox<Employee.Status> status = new ComboBox<>("Status");
-	
 	ComboBox<Department> department = new ComboBox<>("Department");
 	
 	Button save = new Button("Save");
 	Button delete = new Button("Delete");
 	Button close = new Button("Cancel");
+	
+	//Constructor
+	public EmployeeForm(){
+		addClassName("employee-form");
+		add(firstName,lastName,email, department, status, createButtonsLayout());
+	}
+	
 	
 	private HorizontalLayout createButtonsLayout() {
 		save.addThemeVariants(ButtonVariant.LUMO_PRIMARY);
@@ -39,7 +43,7 @@ public class EmployeeForm extends FormLayout {
 		close.addThemeVariants(ButtonVariant.LUMO_TERTIARY);
 		
 		save.addClickShortcut(Key.ENTER);
-		save.addClickShortcut(Key.ESCAPE);
+		close.addClickShortcut(Key.ESCAPE);
 		
 		return new HorizontalLayout(save, delete, close); 
 	}

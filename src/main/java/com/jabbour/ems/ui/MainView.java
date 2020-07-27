@@ -8,6 +8,7 @@ import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.button.ButtonVariant;
 import com.vaadin.flow.component.dependency.CssImport;
 import com.vaadin.flow.component.grid.Grid;
+import com.vaadin.flow.component.html.Div;
 import com.vaadin.flow.component.notification.Notification;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.component.textfield.TextField;
@@ -33,9 +34,8 @@ import org.springframework.beans.factory.annotation.Autowired;
         shortName = "Vaadin App",
         description = "This is an example Vaadin application.",
         enableInstallPrompt = false)
-@CssImport("./styles/shared-styles.css")
-@CssImport(value = "./styles/vaadin-text-field-styles.css", themeFor = "vaadin-text-field")
 @Route("")
+@CssImport("./styles/shared-styles.css")
 public class MainView extends VerticalLayout {
 
     /**
@@ -48,16 +48,26 @@ public class MainView extends VerticalLayout {
 	private EmployeeService employeeService;
 	private Grid<Employee> grid = new Grid<>(Employee.class);
 	private TextField filterText = new TextField();
-	
-	
-	
-    public MainView(EmployeeService employeeService){
+	private EmployeeForm empForm;
+
+	/**
+	 * component for main view
+	 * @param employeeService
+	 */
+	public MainView(EmployeeService employeeService){
     	this.employeeService = employeeService;
     	addClassName("list-view");   //declare a CSS class name for styling support.
     	setSizeFull(); //Set height and Width to 100%
-    	configureFilter();
+
     	configureGrid();
-    	add(filterText, grid);// add the grid to the main view layout.
+    	configureFilter();
+
+    	empForm = new EmployeeForm();
+    	Div content = new Div(grid, empForm);// place grid and form child components into a div element.
+    	content.addClassName("content");
+    	content.setSizeFull();
+    	
+    	add(filterText, content);// add the filtertextfield and  to the main view layout.
     	updateList();
     }
     /**
@@ -76,20 +86,15 @@ public class MainView extends VerticalLayout {
 		grid.getColumns().forEach(col -> col.setAutoWidth(true));
 		
 	}
-    
     /**
-     * 
+     * method for setting up text filter functionality.
      */
     private void configureFilter() {
     	filterText.setPlaceholder("Filter by name...");
     	filterText.setClearButtonVisible(true);
     	filterText.setValueChangeMode(ValueChangeMode.LAZY);
     	filterText.addValueChangeListener(e -> updateList());
-    	
     }
-    
-    
-    
     /**
      * Return all employees from the service and pass them into the grid.
      * filter text will look for first or last name of employee
