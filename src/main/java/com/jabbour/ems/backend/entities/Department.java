@@ -26,5 +26,4 @@ public class Department extends AbstractEntity {
 			this.deptName = departmentName;
 		}
 
-	  //@Override public String toString() { return deptName; }
 }
