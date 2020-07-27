@@ -22,7 +22,7 @@ import com.jabbour.ems.backend.repository.EmployeeRepository;
  *  It lets you do CRUD operations 
  *  on a database depending on which DB you choose to incorporate.
  *  
- * @author chris
+ * @author Chris
  */
 
 @Service
@@ -47,6 +47,25 @@ public class EmployeeService {
 	public List<Employee> findAll() {
 		return employeeRepository.findAll();
 	}
+	
+	public List<Employee> findAll(String stringFilter)
+	{
+		if (stringFilter == null || stringFilter.isEmpty())
+		{
+			return employeeRepository.findAll();
+		}
+		else {
+			return employeeRepository.search(stringFilter);
+		}
+		
+	}
+	
+	
+	
+	
+	
+	
+	
 	/***
 	 * return number of instances in empRepository
 	 * @return the number of entities available
