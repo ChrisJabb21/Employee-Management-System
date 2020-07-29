@@ -4,7 +4,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
-import com.jabbour.ems.backend.entities.Department;
+import com.jabbour.ems.backend.entity.Department;
 import com.jabbour.ems.backend.repository.DepartmentRepository;
 
 @Service

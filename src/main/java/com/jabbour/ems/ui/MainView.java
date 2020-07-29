@@ -1,8 +1,10 @@
 package com.jabbour.ems.ui;
 
-import com.jabbour.ems.backend.entities.Department;
-import com.jabbour.ems.backend.entities.Employee;
+import com.jabbour.ems.backend.entity.Department;
+import com.jabbour.ems.backend.entity.Employee;
+import com.jabbour.ems.backend.service.DepartmentService;
 import com.jabbour.ems.backend.service.EmployeeService;
+import com.jabbour.ems.ui.EmployeeForm.SaveEvent;
 import com.vaadin.flow.component.Key;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.button.ButtonVariant;
@@ -17,34 +19,17 @@ import com.vaadin.flow.router.Route;
 import com.vaadin.flow.server.PWA;
 import org.springframework.beans.factory.annotation.Autowired;
 
-/**
- * A sample Vaadin view class.
- * <p>
- * To implement a Vaadin view just extend any Vaadin component and
- * use @Route annotation to announce it in a URL as a Spring managed
- * bean.
- * Use the @PWA annotation make the application installable on phones,
- * tablets and some desktop browsers.
- * <p>
- * A new instance of this class is created for every new user and every
- * browser tab/window.
- */
-
 @PWA(name = "Vaadin Application",
         shortName = "Vaadin App",
         description = "This is an example Vaadin application.",
         enableInstallPrompt = false)
 @Route("")
 @CssImport("./styles/shared-styles.css")
+/**
+ * Construct a new Vaadin view to populate grid table with data.
+ * Build the initial UI state for the user accessing the application.
+ */
 public class MainView extends VerticalLayout {
-
-    /**
-     * Construct a new Vaadin view to populate grid table with data.
-     * <p>
-     * Build the initial UI state for the user accessing the application.
-     *
-     */
-	
 	private EmployeeService employeeService;
 	private Grid<Employee> grid = new Grid<>(Employee.class);
 	private TextField filterText = new TextField();
@@ -54,7 +39,8 @@ public class MainView extends VerticalLayout {
 	 * component for main view
 	 * @param employeeService
 	 */
-	public MainView(EmployeeService employeeService){
+	public MainView(EmployeeService employeeService,
+			DepartmentService departmentService){
     	this.employeeService = employeeService;
     	addClassName("list-view");   //declare a CSS class name for styling support.
     	setSizeFull(); //Set height and Width to 100%
@@ -62,15 +48,72 @@ public class MainView extends VerticalLayout {
     	configureGrid();
     	configureFilter();
 
-    	empForm = new EmployeeForm();
+    	empForm = new EmployeeForm(departmentService.findAll());
+    	empForm.addListener(EmployeeForm.SaveEvent.class, this::saveEmp);
+    	empForm.addListener(EmployeeForm.DeleteEvent.class, this::deleteEmp);
+    	empForm.addListener(EmployeeForm.CloseEvent.class, e -> closeEditor());
+
+
+    	
+    	
     	Div content = new Div(grid, empForm);// place grid and form child components into a div element.
     	content.addClassName("content");
     	content.setSizeFull();
     	
     	add(filterText, content);// add the filtertextfield and  to the main view layout.
     	updateList();
+    	closeEditor();
     }
-    /**
+	
+	/***
+	 * Event Listener method 
+	 * for saving an employee to its repository. 
+	 * @param event
+	 */
+	private void saveEmp(EmployeeForm.SaveEvent event){
+		employeeService.save(event.getEmployee());
+		updateList();
+		closeEditor();
+	}
+	
+	/***
+	 * Event Listener method 
+	 * for deleting an employee to its repository. 
+	 * @param event
+	 */
+	private void deleteEmp(EmployeeForm.DeleteEvent event) {
+		employeeService.delete(event.getEmployee());
+		updateList();
+		closeEditor();
+	}
+	
+	
+/*** Method for hiding the employee form editor
+	 * */
+	private void closeEditor(){
+		empForm.setEmployee(null);
+		empForm.setVisible(false);
+		removeClassName("editing");
+	}
+	
+	/***
+	 * Method that hides and shows the form 
+	 * and based on the up the employee selected on the grid  
+	 * using the addvaluechange listener
+	 * @param employee -> the employee to modify or if nothing is selected, null.
+	 */
+	public void editEmployee(Employee employee)
+	{
+		if(employee == null) {
+			closeEditor();
+		} else {
+			empForm.setEmployee(employee);
+			empForm.setVisible(true);
+			addClassName("editing");
+		}
+	}
+
+	/**
      * Method for configuring the grid object and populating the table
      */
     private void configureGrid() {
@@ -84,6 +127,7 @@ public class MainView extends VerticalLayout {
 			}).setHeader("Department");
 		
 		grid.getColumns().forEach(col -> col.setAutoWidth(true));
+		grid.asSingleSelect().addValueChangeListener(event -> editEmployee(event.getValue()));
 		
 	}
     /**
@@ -96,9 +140,8 @@ public class MainView extends VerticalLayout {
     	filterText.addValueChangeListener(e -> updateList());
     }
     /**
-     * Return all employees from the service and pass them into the grid.
+     * Return all employees from the service after an event is triggered and pass them into the grid.
      * filter text will look for first or last name of employee
-     * 
      * */
     private void updateList() {
     	grid.setItems(employeeService.findAll(filterText.getValue()));

@@ -1,4 +1,4 @@
-package com.jabbour.ems.backend.entities;
+package com.jabbour.ems.backend.entity;
 
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
