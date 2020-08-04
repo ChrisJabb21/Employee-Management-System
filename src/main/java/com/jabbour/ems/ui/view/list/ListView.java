@@ -1,10 +1,13 @@
-package com.jabbour.ems.ui;
+package com.jabbour.ems.ui.view.list;
 
 import com.jabbour.ems.backend.entity.Department;
 import com.jabbour.ems.backend.entity.Employee;
 import com.jabbour.ems.backend.service.DepartmentService;
 import com.jabbour.ems.backend.service.EmployeeService;
-import com.jabbour.ems.ui.EmployeeForm.SaveEvent;
+import com.jabbour.ems.ui.MainLayout;
+import com.jabbour.ems.ui.view.list.EmployeeForm.CloseEvent;
+import com.jabbour.ems.ui.view.list.EmployeeForm.DeleteEvent;
+import com.jabbour.ems.ui.view.list.EmployeeForm.SaveEvent;
 import com.vaadin.flow.component.Key;
 import com.vaadin.flow.component.UI;
 import com.vaadin.flow.component.button.Button;
@@ -12,26 +15,27 @@ import com.vaadin.flow.component.button.ButtonVariant;
 import com.vaadin.flow.component.dependency.CssImport;
 import com.vaadin.flow.component.grid.Grid;
 import com.vaadin.flow.component.html.Div;
+import com.vaadin.flow.component.html.H1;
 import com.vaadin.flow.component.notification.Notification;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.data.value.ValueChangeMode;
 import com.vaadin.flow.dom.ThemeList;
+import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
 import com.vaadin.flow.server.PWA;
 import com.vaadin.flow.theme.lumo.Lumo;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
-@PWA(name = "Vaadin Application", shortName = "Vaadin App", description = "This is an example Vaadin application.", enableInstallPrompt = false)
-@Route("")
-@CssImport("./styles/shared-styles.css")
+@Route(value="", layout = MainLayout.class)
+@PageTitle("Employees | Slick EMS")
 /**
- * Construct a new Vaadin view to populate grid table with data. Build the
+ * Construct a Vaadin view to populate grid table with data. Build the
  * initial UI state for the user accessing the application.
  */
-public class MainView extends VerticalLayout {
+public class ListView extends VerticalLayout {
 	private EmployeeService employeeService;
 	private Grid<Employee> grid = new Grid<>(Employee.class);
 	private TextField filterText = new TextField();
@@ -43,7 +47,7 @@ public class MainView extends VerticalLayout {
 	 * @param employeeService
 	 * @param departmentService
 	 */
-	public MainView(EmployeeService employeeService, DepartmentService departmentService) {
+	public ListView(EmployeeService employeeService, DepartmentService departmentService) {
 		this.employeeService = employeeService;
 		addClassName("list-view"); // declare a CSS class name for styling support.
 		setSizeFull(); // Set height and Width to 100%
@@ -66,7 +70,8 @@ public class MainView extends VerticalLayout {
 		});
 		
 		//Header
-		add(toggleButton);
+	    H1 h1 = new H1("Slick EMS");
+		add(toggleButton,h1);
 
 		
 		//DivContent
@@ -164,12 +169,11 @@ public class MainView extends VerticalLayout {
 	}
 
 	/***
-	 * 
+	 * Method to add a new employee
 	 */
 	void addEmployee() {
 		grid.asSingleSelect().clear();
 		editEmployee(new Employee());
-
 	}
 
 	/**

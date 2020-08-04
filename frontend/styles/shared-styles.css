@@ -5,6 +5,21 @@
 */
 
 
+/* Main layout */
+a[highlight]{
+	font-weight: bold;
+	text-decoration: underline;
+}
+.header {
+	padding: 0 var(--lumo-space-m);
+}
+
+.header h1.logo {
+	font-size: 1em;
+	margin: var(--lumo-space-m);
+}
+
+
 /* List view */
 .list-view .content {
 	display: flex;

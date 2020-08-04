@@ -1,4 +1,4 @@
-package com.jabbour.ems.ui;
+package com.jabbour.ems.ui.view.list;
 
 import java.util.List;
 
