@@ -8,7 +8,8 @@ import javax.persistence.MappedSuperclass;
 /***
  * The common superclass 
  * that the entities will inherit and 
- * not be a generated table
+ * not generate a table
+ * 
  * it define how objects ids are generated 
  * and how object equality is determined.
  * @author chris jabbour
