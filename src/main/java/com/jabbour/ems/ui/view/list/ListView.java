@@ -60,20 +60,6 @@ public class ListView extends VerticalLayout {
 		empForm.addListener(EmployeeForm.DeleteEvent.class, this::deleteEmp);
 		empForm.addListener(EmployeeForm.CloseEvent.class, e -> closeEditor());
 
-		Button toggleButton = new Button("Toggle ☀️/🌙", click -> {
-			ThemeList themeList = UI.getCurrent().getElement().getThemeList(); //
-			if (themeList.contains(Lumo.DARK)) { //
-				themeList.remove(Lumo.DARK);
-			} else {
-				themeList.add(Lumo.DARK);
-			}
-		});
-		
-		//Header
-	    H1 h1 = new H1("Slick EMS");
-		add(toggleButton,h1);
-
-		
 		//DivContent
 		Div content = new Div( grid, empForm);// place grid and form child components into a div element.
 		content.addClassName("content");
