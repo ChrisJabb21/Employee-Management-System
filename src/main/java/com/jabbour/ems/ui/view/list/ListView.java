@@ -148,10 +148,7 @@ public class ListView extends VerticalLayout {
 		toolbar.addClassName("toolbar");
 		return toolbar;
 
-		// TODO add a button to add a department...
-
-		// TODO add a button for to toggle day and dark mode
-
+		// TODO add a button/grid to add a department
 	}
 
 	/***
