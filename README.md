@@ -13,7 +13,9 @@ Front-end UI: Vaadin UI framework
 <img src=https://raw.githubusercontent.com/ChrisJabb21/Employee-Management-System/master/images/my-ems-project.png>
    <em>test demo version 1</em>
 </p>
+
 ## Testing: Running the Application
+
 There are two ways to run the application :  using `mvn spring-boot:run` or by running the `Application` class directly from your IDE.
 
 You can use any IDE of your preference,but we suggest Eclipse or Intellij IDEA.
@@ -37,21 +39,6 @@ After the application has started, you can view your it at http://localhost:8080
 
 
 If you want to run the application locally in the production mode, use `spring-boot:run -Pproduction` command instead.
-### Running Integration Tests
-
-Integration tests are implemented using [Vaadin TestBench](https://vaadin.com/testbench). The tests take a few minutes to run and are therefore included in a separate Maven profile. We recommend running tests with a production build to minimize the chance of development time toolchains affecting test stability. To run the tests using Google Chrome, execute
-
-`mvn verify -Pit,production`
-
-and make sure you have a valid TestBench license installed.
-
-Profile `it` adds the following parameters to run integration tests:
-```sh
--Dwebdriver.chrome.driver=path_to_driver
--Dcom.vaadin.testbench.Parameters.runLocally=chrome
-```
-
-If you would like to run a separate test make sure you have added these parameters to VM Options of JUnit run configuration
 
 ## Project overview
 Project follow the Maven's [standard directory layout structure](https://maven.apache.org/guides/introduction/introduction-to-the-standard-directory-layout.html):
