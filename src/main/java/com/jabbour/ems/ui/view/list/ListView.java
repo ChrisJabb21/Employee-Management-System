@@ -5,29 +5,15 @@ import com.jabbour.ems.backend.entity.Employee;
 import com.jabbour.ems.backend.service.DepartmentService;
 import com.jabbour.ems.backend.service.EmployeeService;
 import com.jabbour.ems.ui.MainLayout;
-import com.jabbour.ems.ui.view.list.EmployeeForm.CloseEvent;
-import com.jabbour.ems.ui.view.list.EmployeeForm.DeleteEvent;
-import com.jabbour.ems.ui.view.list.EmployeeForm.SaveEvent;
-import com.vaadin.flow.component.Key;
-import com.vaadin.flow.component.UI;
 import com.vaadin.flow.component.button.Button;
-import com.vaadin.flow.component.button.ButtonVariant;
-import com.vaadin.flow.component.dependency.CssImport;
 import com.vaadin.flow.component.grid.Grid;
 import com.vaadin.flow.component.html.Div;
-import com.vaadin.flow.component.html.H1;
-import com.vaadin.flow.component.notification.Notification;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.data.value.ValueChangeMode;
-import com.vaadin.flow.dom.ThemeList;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
-import com.vaadin.flow.server.PWA;
-import com.vaadin.flow.theme.lumo.Lumo;
-
-import org.springframework.beans.factory.annotation.Autowired;
 
 @Route(value="", layout = MainLayout.class)
 @PageTitle("Employees | Slick EMS")
