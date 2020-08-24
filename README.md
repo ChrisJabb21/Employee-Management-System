@@ -4,9 +4,15 @@ A Spring boot web application application that lets you add, delete, edit and up
 
 Technologies used: Java programming language, Spring Boot, H2 in-memory database to test mock data, Spring Security.
 
+
 Front-end UI: Vaadin UI framework
 
+## Showcase
 
+<p>
+<img src=https://raw.githubusercontent.com/ChrisJabb21/Employee-Management-System/master/images/my-ems-project.png>
+   <em>test demo version 1</em>
+</p>
 ## Testing: Running the Application
 There are two ways to run the application :  using `mvn spring-boot:run` or by running the `Application` class directly from your IDE.
 
