@@ -1,11 +1,11 @@
 ## Project Overview
 
-A Spring boot web application application that lets you add, delete, edit and update employees in different departments for enterprise needs and contact info. (status: functional and testable) (other features being added in consideration.)
+A Spring boot web application application that lets you add, delete, edit and update employees in different departments for enterprise needs and contact info.
 
 Technologies used: Java programming language, Spring Boot, H2 in-memory database to test mock data, Spring Security.
 
 
-Front-end UI: Vaadin UI framework
+Front-end UI and Routing implementation: Vaadin UI framework
 
 ## Showcase
 
