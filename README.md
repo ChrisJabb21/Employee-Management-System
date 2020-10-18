@@ -41,7 +41,7 @@ After the application has started, you can view your it at http://localhost:8080
 If you want to run the application locally in the production mode, use `spring-boot:run -Pproduction` command instead.
 
 ## Project overview
-Project follow the Maven's [standard directory layout structure](https://maven.apache.org/guides/introduction/introduction-to-the-standard-directory-layout.html):
+A Java Web App with Vaadin follows the Maven's [standard directory layout structure](https://maven.apache.org/guides/introduction/introduction-to-the-standard-directory-layout.html):
 - Under the `src/main/java` are located Application sources
 - Under the `src/test` are located test files
 - `src/main/resources` contains configuration files and static resources
